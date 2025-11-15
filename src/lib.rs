@@ -303,6 +303,13 @@ pub struct BodyWrapper<B> {
     inner: Option<B>,
 }
 
+impl<B> BodyWrapper<B> {
+    /// take inner from body wrapper
+    pub fn take(mut self) -> Option<B> {
+        self.inner.take()
+    }
+}
+
 #[async_trait]
 impl<B> BytesBody for BodyWrapper<B>
 where
